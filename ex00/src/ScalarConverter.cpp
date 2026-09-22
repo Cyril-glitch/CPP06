@@ -6,7 +6,7 @@
 /*   By: cycolonn <cycolonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 12:30:47 by cycolonn          #+#    #+#             */
-/*   Updated: 2026/09/21 15:30:03 by cycolonn         ###   ########.fr       */
+/*   Updated: 2026/09/22 12:35:22 by cycolonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,32 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
-bool    ScalarConverter::HandlePseudoLit(const std::string& from)
+
+bool _isEmpty(const std::string& from)
 {
-    if(from == "nan" || from == "+inf" || from == "-inf")     
-        return true;  
-    if(from == "nanf" || from == "+inff" || from == "-inff") 
+    return (from.empty());
+}
+
+bool _isPseudoLit(const std::string& from)
+{
+    if (from == "nan" || from == "+inf" || from == "-inf" ||
+        from == "nanf" || from == "+inff" || from == "-inff")
         return true;
     return false; 
 }
 
+bool _isChar(const std::string& from)
+{
+    if (from.length() != 3) return false;
+    if (std::isprint(from[1]) || std::isdigit(from[1])) return false;
+    if (from[0] != '\'' || from[2] != '\'') return false;
+    return true;
+}
 
+bool _isNum(const std::string& from)
+{
+    return std::__count_if(from.begin(), from.end(),std::isdigit())
+}
 
 void ScalarConverter::convert(const std::string& from)
 {

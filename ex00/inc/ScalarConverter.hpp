@@ -6,7 +6,7 @@
 /*   By: cycolonn <cycolonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 11:56:26 by cycolonn          #+#    #+#             */
-/*   Updated: 2026/09/21 15:09:32 by cycolonn         ###   ########.fr       */
+/*   Updated: 2026/09/22 12:14:28 by cycolonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ class ScalarConverter
         ~ScalarConverter();
 
         ScalarConverter& operator=(const ScalarConverter& rhs);
+
+        enum  Type {INVALID, PSEUDOLIT, CHAR, INT, DOUBLE, FLOAT};
         
-        static void 
-        static bool    _pseudoLit(const std::string& from);
+        static bool _isEmpty(const std::string& from);
+        static bool _isPseudoLit(const std::string& from);
+        static bool _isChar(const std::string& from);
+        static bool _isNum(const std::string& from);
 };
 
 #endif
