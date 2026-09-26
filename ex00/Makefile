@@ -6,7 +6,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ_DIR = obj
 
 SRC = src/main.cpp \
-	  src/ScalarConverter.cpp 
+	src/ScalarConverter.cpp \
+	src/checktype.cpp \
+	src/display.cpp
 
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))
